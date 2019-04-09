@@ -1,5 +1,6 @@
 To install:
-
+    git clone https://github.com/simonsobs/xgpaint.git
+    cd xgpaint/halo2fluxmap
     python setup.py install [--user]
     
 To run example:
