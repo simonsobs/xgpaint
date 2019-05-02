@@ -1,0 +1,31 @@
+folder       = '/project/projectdirs/mp107/exgal/websky/dev/v0.1/catalogs/'
+inputfile    = 'websky_halos-light.pksc'
+format       = 'pksc'
+outbase      = 'cib'
+
+iwantcat     = 0
+verbose      = 2
+Nreads       = 16
+
+LightIO	     = True
+serial       = False
+flat         = 0            #0 for all sky, 1 for flatsky
+#all maps will be normalized w.r.t to the mean of the first map
+#freq_list    = ([545.]) 
+freq_list    = ([545., 100., 143., 217., 353., 857., 26., 27., 28., 38., 39., 40., 92., 93., 94., 144., 145., 146., 224., 225., 226., 279., 280., 281.]) 
+Inu_norm     = 0.09 #0.0299988959602  # z<1.25 and z< 4.5 for M > 2.62e13Msun = 0.019840695547 0.0299988959602 
+nside        = 4096         #nside for healpix, npix for flatsky
+fov	     = 10
+numdens      = 0            #0 for cib, 1 for optical 
+
+min_redshift = 0.0
+max_redshift = 4.5
+num_redshift = 1       # If memory limited, splits the map into redshift slices 
+min_mass     = 1e12
+box_size     = 40000
+
+hod          = 'shang'      #"shang" for cib, "manera" for optical 
+LM           = 'Planck2013' #'Planck2015'
+
+shang_Mpeak  = 10.**12.6
+shang_sigmaM = 0.5
