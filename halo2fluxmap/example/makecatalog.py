@@ -57,7 +57,7 @@ RTH = (3*M/4./np.pi/rho)**(1./3.)
 np.asarray([N]).astype(np.int32).tofile(fileout)
 np.asarray([RTH.max()]).astype(np.float32).tofile(fileout)
 np.asarray([0]).astype(np.float32).tofile(fileout)
-np.asarray([y,z,x,ph,ph,ph,RTH,ph,ph,ph]).transpose().astype(np.float32).tofile(fileout)
+np.asarray([x,y,z,RTH]).transpose().astype(np.float32).tofile(fileout)
 
 fileout.close()
 

@@ -42,15 +42,15 @@ def sources2map(pcen,mcen,fcen,nsat,
 		I_mapl *= fi * globals.ff * globals.fs
 
         if params.flat==1:
-                thetaxc = np.abs(np.arctan(pcen[:,0]/pcen[:,2]))*2
-                thetayc = np.abs(np.arctan(pcen[:,1]/pcen[:,2]))*2
+                thetaxc = np.abs(np.arctan(pcen[:,1]/pcen[:,0]))*2
+                thetayc = np.abs(np.arctan(pcen[:,2]/pcen[:,0]))*2
                 dmc = [(thetaxc < np.radians(params.fov)) & (thetayc < np.radians(params.fov))
-                       & (pcen[:,2]>0)]
+                       & (pcen[:,0]>0)]
 
-                thetaxs = np.abs(np.arctan(psat[:,0]/psat[:,2]))*2
-                thetays = np.abs(np.arctan(psat[:,1]/psat[:,2]))*2
+                thetaxs = np.abs(np.arctan(psat[:,1]/psat[:,0]))*2
+                thetays = np.abs(np.arctan(psat[:,2]/psat[:,0]))*2
                 dms = [(thetaxs < np.radians(params.fov)) & (thetays < np.radians(params.fov))
-                       & (psat[:,2]>0)]
+                       & (psat[:,0]>0)]
 
                 tot_src_fluxl = fcen[dmc].sum() + fsat[dms].sum() # fiducial units
 
