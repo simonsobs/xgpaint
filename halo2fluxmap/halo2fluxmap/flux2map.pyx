@@ -71,7 +71,7 @@ def cen2sat(np.ndarray cen, np.ndarray n):
     cdef int i
     for i in range(N_cen):
         sat[count:count+n[i],:] = cen[i,:]
-        count += n[i]	
+        count += n[i]
         
     return sat    
 
@@ -104,8 +104,8 @@ def cen2sat_masses(np.ndarray cen, np.ndarray n, np.ndarray nmean):
         Rank = uniform(0.0,N_satbar,N_sat)
         mu   = muofn(Rank)
         
-    for isat in range(N_sat):
-        msat[count+isat] = mu[isat] * M_cen
+        for isat in range(N_sat):
+            msat[count+isat] = mu[isat] * M_cen
         count += n[icen]
         
     return msat
