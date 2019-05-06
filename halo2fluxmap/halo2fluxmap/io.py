@@ -11,10 +11,10 @@ from   utils   import *
 from   halocat import *
 
 def report_local(string,i,Ncen):
-        if params.rank == 0:
-                sys.stdout.write('\n '+params.justify+str(i+1)+' of '+str(params.Nreads)+
-                                 ' chunks '+string+' Ncen = '+str(Ncen))
-                sys.stdout.flush()
+    if params.rank == 0:
+        sys.stdout.write('\n '+params.justify+str(i+1)+' of '+str(params.Nreads)+
+                         ' chunks '+string+' Ncen = '+str(Ncen))
+        sys.stdout.flush()
         
 def read_catalog():
     for i in range(params.Nreads):  
@@ -63,7 +63,6 @@ def writemap(base,intensity):
     if params.flat==0:
         filename = base+'.fits' 
         hp.write_map(filename,intensity)
-
     elif params.flat==1:
         filename = base+'.map' 
         intensity = intensity.astype('float32')
