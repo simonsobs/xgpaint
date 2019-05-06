@@ -20,7 +20,7 @@ def makemapflat(np.ndarray x,np.ndarray y, np.ndarray z,np.ndarray F, nside,fov)
     dp  = fov/nside  
     #+fov/2 to ensure numbers in pixind are positive
     
-    dm = [(x>0)]   
+    dm = (x>0)
     z = z[dm]
     y = y[dm]         
     x = x[dm] 
@@ -32,11 +32,11 @@ def makemapflat(np.ndarray x,np.ndarray y, np.ndarray z,np.ndarray F, nside,fov)
     theta = np.arcsin(theta) 
     phi   = np.arcsin(phi)
     
-    dm = [(abs(theta)<fov/2)]   
+    dm = (abs(theta)<fov/2)
     theta = theta[dm]         
     phi   = phi[dm] 
     F = F[dm]
-    dm = [(abs(phi)<fov/2)] 
+    dm = ((abs(phi)<fov/2))
     theta = theta[dm] 
     phi   = phi[dm]
     F     = F[dm]

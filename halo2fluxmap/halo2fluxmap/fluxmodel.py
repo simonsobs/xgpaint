@@ -88,7 +88,7 @@ def LF(M,x,y,z,gtype):
 
     return L
 
-def l2f(L,x,y,z):	
+def l2f(L,x,y,z):
 
     r  = x**2 
     r += y**2

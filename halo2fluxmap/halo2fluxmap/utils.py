@@ -105,8 +105,8 @@ def cull_catalog(data):
     if params.flat == 1:
         thetaxc = np.abs(np.arctan(data[:,1]/data[:,0]))*2
         thetayc = np.abs(np.arctan(data[:,2]/data[:,0]))*2	
-        dm = [(thetaxc < np.radians(params.fov)) & (thetayc < np.radians(params.fov))
-              & (data[:,0]>0)]
+        dm = ((thetaxc < np.radians(params.fov)) & (thetayc < np.radians(params.fov))
+              & (data[:,0]>0))
         data = data[dm]
     else:        
         xcmin=-1e10; xcmax=1e10; ycmin=-1e10; ycmax=1e10; zcmin=-1e10; zcmax=1e10;
