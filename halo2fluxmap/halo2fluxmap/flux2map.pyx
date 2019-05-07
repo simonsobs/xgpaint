@@ -61,14 +61,14 @@ def cen2sat(np.ndarray cen, np.ndarray n):
     sat[:,0]: array containing parent halo mass for each satellite
     '''
     
-    cdef int N_sat = np.sum(n)
-    cdef int N_cen = np.shape(cen)[0]
-    cdef int N_prp = np.shape(cen)[1]
+    cdef long N_sat = np.sum(n)
+    cdef long N_cen = np.shape(cen)[0]
+    cdef long N_prp = np.shape(cen)[1]
     
     sat = np.zeros((N_sat,N_prp),dtype='float32')
     
-    cdef int count = 0
-    cdef int i
+    cdef long count = 0
+    cdef long i
     for i in range(N_cen):
         sat[count:count+n[i],:] = cen[i,:]
         count += n[i]
@@ -86,17 +86,17 @@ def cen2sat_masses(np.ndarray cen, np.ndarray n, np.ndarray nmean):
     msat[:]: array containing subhalo mass for each satellite
     '''
     
-    cdef int N_sat = np.sum(n)
-    cdef int N_cen = np.shape(cen)[0]
-    cdef int N_prp = np.shape(cen)[1]
+    cdef long N_sat = np.sum(n)
+    cdef long N_cen = np.shape(cen)[0]
+    cdef long N_prp = np.shape(cen)[1]
     
     msat = np.zeros(N_sat,dtype='float32')
     
     # Make function of mass fraction as a function of number of satellites
     muofn = make_muofn()
     
-    cdef int count = 0
-    cdef int i
+    cdef long count = 0
+    cdef long i
     for icen in range(N_cen):
         N_sat    = n[icen]
         N_satbar = nmean[icen]
