@@ -122,9 +122,10 @@ def LF(M,x,y,z,gtype):
         if(gtype == 'cen'): return M * 0.0
         if(gtype == 'sat'):  
             L = (broken_power_law_sehgal(M) * 
-                 (1+params.sehgal_R_int * sehgal_B(M.shape[0]))
+                 (1 * sehgal_sed(M.shape[0]) +
+                  params.sehgal_R_int * sehgal_B(M.shape[0]) * (params.nu_obs/145e9)**(-0.8))
                  / (1+params.sehgal_R_int))
-            return L * (1+z) * sehgal_sed(M.shape[0])
+            return L * (1+z) 
 
     L *= nu2theta(r)
     L *= (1+z)**params.shang_eta
