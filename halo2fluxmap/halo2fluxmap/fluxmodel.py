@@ -30,6 +30,26 @@ def sigma_sat(m):
 
     return f_L(np.log(m))
 
+
+def broken_power_law_sehgal(m_in):
+    Lb = params.sehgal_L_b
+    m = params.sehgal_m
+    n = params.sehgal_n
+    p0 = (1+m) * (1+n) / Lb / (m-n)
+    
+    def F_inv_lower(F_in):
+        return (Lb**n * (1.0+n) * F_in / p0)**(1.0 / (1.0+n))
+    def F_inv_upper(F_in):
+        return (- Lb**m * (1+m) * (Lb * p0 * ( 1/(1.0+n) - 1/(1.0+m) ) - F_in) / p0 )**(1.0 / (1.0+m))
+    Fb = Lb * p0 / (1+n)
+    def F_inv(F_in):
+        return np.piecewise(F_in, [F_in < Fb, F_in >= Fb], [F_inv_lower, F_inv_upper])
+    
+    unif_x = np.random.uniform(size=m_in.shape[0])
+    return F_inv(unif_x)
+
+
+
 def jiang_shmf(m,M_halo):	
     gamma_1    = 0.13
     alpha_1    = -0.83
@@ -66,13 +86,28 @@ def nu2theta(nu):
                xnu**(4.+params.shang_beta)/(np.exp(xnu)-1.))
     return Thetanu
 
+def sehgal_B(n_obj):
+    costh = np.random.uniform(size=n_obj)
+    beta = np.sqrt(1 - 1./(params.sehgal_gamma**2))
+    return ((1 - beta*costh)**(-2.0) + (1 + beta*costh)**(-2.0)) / 2.0
+
+def sehgal_sed(n_obj):
+    a0, (a1l, a1r), (a2l, a2r), (a3l ,a3r) = params.sehgal_a_coeff
+    print(a0, (a1l, a1r), (a2l, a2r), (a3l ,a3r))
+    a1 = np.random.uniform(low=a1l, high=a1r, size=n_obj)
+    a2 = np.random.uniform(low=a2l, high=a2r, size=n_obj)
+    a3 = np.random.uniform(low=a3l, high=a3r, size=n_obj)
+    lnu = np.log10(params.nu_obs/1e9)
+    sed = 10**( a0 + a1*lnu + a2*lnu**2 + a3*lnu**3 )
+    return sed
+    
 def LF(M,x,y,z,gtype):
 
     r  = x**2 
     r += y**2
     r += z**2
     r  = r**0.5
-    r *= globals.Rf	
+    r *= globals.Rf
 
     z  = r2z(r)
     r  = (1+z)*params.nu_obs      #observed frequency in Hz
@@ -80,8 +115,16 @@ def LF(M,x,y,z,gtype):
     if (params.LM=="Planck2013"):
         if(gtype == 'cen'): L = sigma_cen(M)
         if(gtype == 'sat'): L = sigma_sat(M)
-    if (params.LM=="Planck2015"):              #const * M_500/1e14M_sun
+    elif (params.LM=="Planck2015"):              #const * M_500/1e14M_sun
         L = M*np.sqrt(200./500) / 1.e14 #sqrt(200/500) to convert M_200 to M_500
+    elif (params.LM=="sehgal_radio"):
+        # just return, do not do Shang stuff
+        if(gtype == 'cen'): return M * 0.0
+        if(gtype == 'sat'):  
+            L = (broken_power_law_sehgal(M) * 
+                 (1+params.sehgal_R_int * sehgal_B(M.shape[0]))
+                 / (1+params.sehgal_R_int))
+            return L * (1+z) * sehgal_sed(M.shape[0])
 
     L *= nu2theta(r)
     L *= (1+z)**params.shang_eta
@@ -93,10 +136,9 @@ def l2f(L,x,y,z):
     r  = x**2 
     r += y**2
     r += z**2
-    r  = r**0.5
-    r *= globals.Rf	
-
-    return L / r**2 / (1+r2z(r)) * globals.Rf**2
+    r  = np.sqrt(np.abs(r))
+    r *= globals.Rf
+    return L / (r**2 / (1+r2z(r)) * globals.Rf**2)
 
 def dimensionless(cen,sat,i):
 

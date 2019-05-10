@@ -2,6 +2,7 @@ import time
 import scipy
 
 from utils   import *
+import globals
 
 def hod(M): 
 
@@ -9,6 +10,8 @@ def hod(M):
         return hod_manera(M)
     elif (params.hod == "shang"):
         return hod_shang(M)
+    elif (params.hod == "sehgal_radio"):
+        return hod_sehgal_radio(M)
     else:
         print "hod " + params.hod + " not found, exiting ..."
         exit()
@@ -33,6 +36,17 @@ def hod_manera(M):
     N_gal = N_cen + N_sat_list          #weights
 
     return N_sat_list,N_cen,N_gal
+
+def hod_sehgal_radio(M):
+
+    if params.mass_type=='log':
+        M = 10**M
+    
+    N_cen = M * 0 + 1
+    N_sat_list = params.sehgal_N_0 * (M / params.sehgal_M_0)**params.sehgal_alpha
+    N_gal = N_cen + N_sat_list          #weights
+    return N_sat_list,N_cen,N_gal
+
 
 def hod_shang(M):
 
@@ -89,8 +103,33 @@ def root_finder(c,lnm):
     root = scipy.optimize.fsolve(g,c*0+1,args=(c,m))/c
     return root
 
+
+def sehgal_redshift_evolution_I(z):
+    return (1+np.minimum(z,params.sehgal_z_p))**params.sehgal_delta
+
+def sehgal_redshift_evolution_II(z):
+    inner_factor = ((z-params.sehgal_z_p)/2)**2
+    return np.piecewise(inner_factor, 
+                 [z < params.sehgal_z_p, z >= params.sehgal_z_p], 
+                 [lambda x: np.exp(-x / (params.sehgal_sigma_l**2)), 
+                  lambda x: np.exp(-x / (params.sehgal_sigma_r**2))])
+
 def cen2ns(cen):
     nsmean = hod(cen[:,3])[0]
+    
+    if (params.hod == "sehgal_radio"):
+
+        r  = (cen[:,0])**2 
+        r += (cen[:,1])**2
+        r += (cen[:,2])**2
+        r  = r**0.5
+
+        z  = r2z(r)
+        if params.sehgal_type == 'I':
+            nsmean *= sehgal_redshift_evolution_I(z)
+        elif params.sehgal_type == 'II':
+            nsmean *= sehgal_redshift_evolution_II(z)
+        
     return np.random.poisson(nsmean).astype('int32'),nsmean
 
 def clnm2r(c,lnm):

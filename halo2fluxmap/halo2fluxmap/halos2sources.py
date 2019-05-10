@@ -29,11 +29,14 @@ def halos2sources(cen,nsat,nsatmean,sat):
         if (params.LM=="Planck2013"):
             lcen = LF(mcen,cen[:,0],cen[:,1],cen[:,2],'cen')
             lsat = LF(msat,sat[:,0],sat[:,1],sat[:,2],'cen') 
-        if (params.LM=="Planck2015"):
+        elif (params.LM=="Planck2015"):
             #divide total luminosity evenly between centrals and satellites
             lcen = LF(mcen,cen[:,0],cen[:,1],cen[:,2],'cen') / (nsat+1)
             lsat = LF(msat,sat[:,0],sat[:,1],sat[:,2],'sat') / (S[:,1]+1)
-
+        elif (params.LM=="sehgal_radio"):
+            lcen = mcen * 0.0
+            lsat = LF(msat,sat[:,0],sat[:,1],sat[:,2],'sat') 
+            
         fcen = l2f(lcen,cen[:,0],cen[:,1],cen[:,2])
         fsat = l2f(lsat,sat[:,0],sat[:,1],sat[:,2])
 

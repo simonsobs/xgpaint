@@ -53,6 +53,22 @@ def getparameters(filename):
     if 'shang_Mpeak'  in dict: params.shang_Mpeak  = dict['shang_Mpeak']
     if 'shang_sigmaM' in dict: params.shang_sigmaM = dict['shang_sigmaM']
     if 'shang_nc2ns'  in dict: params.shang_nc2ns  = dict['shang_nc2ns']
+        
+    if 'sehgal_M_0'  in dict: params.sehgal_M_0  = dict['sehgal_M_0']
+    if 'sehgal_N_0'  in dict: params.sehgal_N_0  = dict['sehgal_N_0']
+    if 'sehgal_alpha'  in dict: params.sehgal_alpha  = dict['sehgal_alpha']
+    if 'sehgal_L_b'  in dict: params.sehgal_L_b  = dict['sehgal_L_b']
+    if 'sehgal_m'  in dict: params.sehgal_m  = dict['sehgal_m']
+    if 'sehgal_n'  in dict: params.sehgal_n  = dict['sehgal_n']
+    if 'sehgal_type' in dict: params.sehgal_type = dict['sehgal_type']
+    if 'sehgal_z_p' in dict: params.sehgal_z_p = dict['sehgal_z_p']
+    if 'sehgal_delta' in dict: params.sehgal_delta = dict['sehgal_delta']
+    if 'sehgal_sigma_l' in dict: params.sehgal_sigma_l = dict['sehgal_sigma_l']
+    if 'sehgal_sigma_r' in dict: params.sehgal_sigma_r = dict['sehgal_sigma_r']
+        
+    if 'sehgal_R_int' in dict: params.sehgal_R_int = dict['sehgal_R_int']
+    if 'sehgal_gamma' in dict: params.sehgal_gamma = dict['sehgal_gamma']
+    if 'sehgal_a_coeff' in dict: params.sehgal_a_coeff = dict['sehgal_a_coeff']
     
     if 'freq_list' in dict: params.freq_list = dict['freq_list'] 
 
