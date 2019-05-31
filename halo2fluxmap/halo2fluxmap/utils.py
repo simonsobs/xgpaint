@@ -9,28 +9,116 @@ from   scipy.integrate    import *
 from   scipy.interpolate  import *
 from   cosmolopy          import *
 
-def r2m(r):
-    rho = 2.78e11 * params.omegam * (params.h**2)
-    return 4./3.*np.pi*rho*r**3
+# hard coded (rho_{crit} / h^2)
+# should replace in params
+RHO_CRIT_OVER_H2 = 2.78e11
 
-def m2r(m):
-    rho = 2.78e11 * params.omegam * (params.h**2)
-    return (3.*m/4./np.pi/rho)**(1./3.)
+def r2m(radius):
+    """Compute mass of a sphere of of critical density, given radius.
+    
+    Parameters
+    ----------
+    radius : float
+        radius in Mpc
+        
+    Returns
+    -------
+    float
+        mass in Msun
+    """
+    # rho is physical density in Msun / Mpc^3
+    rho = RHO_CRIT_OVER_H2 * params.omegam * (params.h**2)
+    return 4./3.*np.pi*rho*radius**3
+
+def m2r(mass):
+    """Compute radius of a sphere of critical density, given mass.
+    
+    Parameters
+    ----------
+    mass : float
+        mass in Msun
+        
+    Returns
+    -------
+    float
+        radius in Mpc
+    """
+    rho = RHO_CRIT_OVER_H2 * params.omegam * (params.h**2)
+    return (3.*mass/4./np.pi/rho)**(1./3.)
 
 def random_phi(N):
+    """Sample uniformly in (0,2pi).
+    
+    This is used for phi in spherical coordinates, the 
+    azimuthal angle in physics convention. 
+    
+    Parameters
+    ----------
+    N : int
+        number of samples to generate
+        
+    Returns
+    -------
+    ndarray of float32 of length N
+        random samples
+    """
     return (np.random.uniform(size=N)*2*np.pi).astype('float32')
 
 def random_theta(N):
+    """Sample theta uniformly over the sphere.
+    
+    This is used for theta in spherical coordinates, the 
+    polar angle in physics convention. 
+    
+    Parameters
+    ----------
+    N : int
+        number of samples to generate
+        
+    Returns
+    -------
+    ndarray of float32 of length N
+        random samples
+    """
     return (np.arccos(2*np.random.uniform(size=N)-1)).astype('float32')
 
-def resetoverhead():
-    params.overhead = params.proc.get_memory_info().rss
-
-def mz2c(m,z):
-    # concentration factor from Duffy et al. 2008
+def mz2c(mass, z):
+    """Get halo concentration from mass and redshift.
+    
+    These are from fits to the WMAP9 cosmology for Duffy et al. 
+    2008 eq. 4, and describing the full (F) population for redshift
+    0-2, described in Duffy et al. 2008 Table 1.
+    
+    Parameters
+    ----------
+    mass : float
+        halo mass in Msun
+    z : float
+        redshift
+    
+    Returns
+    -------
+    float
+        halo concentration parameter
+    """
     return 7.85 * (m / (2e+12/params.h))**-0.081 / (1+z)**0.71
-               
+
 def r2z(r):
+    """Compute comoving distance from redshift.
+    
+    This currently computes the distance by generating an array of
+    distances and redshifts from cosmolopy.
+    
+    Parameters
+    ----------
+    r : float
+        Radius (Mpc)
+        
+    Returns
+    -------
+    float
+        comoving distance
+    """
     zrange   = np.linspace(0,6,1000)
     r_to_z   = sp.interpolate.interp1d(
         cd.comoving_distance_transverse(
@@ -38,8 +126,20 @@ def r2z(r):
     return r_to_z(r).astype('float32')
 
 def report(description,verbosity):
+    """Print a string only if on MPI rank 0 and sufficient verbosity.
+    
+    Parameters
+    ----------
+    description : string
+        string to be printed by the rank 0 process
+    verbosity : int
+        will be compared to params.verbosity
+    """
     if(params.rank==0 and params.verbose>=verbosity): 
-        print params.justify,description
+        print(params.justify,description)
+
+def resetoverhead():
+    params.overhead = params.proc.get_memory_info().rss        
 
 def check_memory(description,N):
   
@@ -53,9 +153,9 @@ def check_memory(description,N):
 
     params.maxmem=max(params.maxmem,memt)
 
-    print '                     ',description,memt,'GB total'
-    print '                         ',mem_per_object,'bytes per array element'
-    print '                         ',flt_per_object,'floats per array element'
+    print('                     ',description,memt,'GB total')
+    print('                         ',mem_per_object,'bytes per array )element'
+    print('                         ',flt_per_object,'floats per array element')
   
     return
 
