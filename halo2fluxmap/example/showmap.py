@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from   scipy.ndimage.filters import gaussian_filter
 import sys
-mapfile = open(sys.argv[1])
+mapfile = 'maps/example_ns4096_nu545.map'
 
 npix = np.fromfile(mapfile,count=2,dtype=np.int32)
 fov  = np.fromfile(mapfile,count=2,dtype=np.float32)

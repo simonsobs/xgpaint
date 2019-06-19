@@ -1,8 +1,10 @@
+# List of parameters and their defaults
 folder       = './'
 inputfile    = 'input_halos.pksc'
 outbase      = 'output_map'
 
 verbose      = 2
+scramble     = False
 LightIO      = True
 Nreads       = 1
 format       = 'pksc'

@@ -9,6 +9,8 @@ from   scipy.integrate    import *
 from   scipy.interpolate  import *
 from   cosmolopy          import *
 
+from   numpy.random       import *
+
 def r2m(r):
     rho = 2.78e11 * params.omegam * (params.h**2)
     return 4./3.*np.pi*rho*r**3
@@ -61,7 +63,6 @@ def check_memory(description,N):
 
 def distribute_catalog(data):
 
-#    report('Distributing...',2)
 
     N = np.shape(data)[0]
 
@@ -91,7 +92,20 @@ def cull_catalog(data):
     
     r = np.sqrt(data[:,0]**2+data[:,1]**2+data[:,2]**2)
     redshift = r2z(r)
-    
+
+    # scamble angular positions over full sky if params.scramble = True
+    if params.scramble:
+        n  = len(r)
+
+        mu  = uniform(-1.0, 1.0,     n)
+        phi = uniform( 0.0, 2*np.pi, n)
+
+        rcyl = r * np.sqrt(1-mu**2)
+
+        data[:,0] = rcyl * np.cos(phi)
+        data[:,1] = rcyl * np.sin(phi)
+        data[:,2] =    r * mu
+
     # filtering halos in the sphere of r<box/2 and z<max_redshift
     dm = (
             (redshift  > params.min_redshift ) & 

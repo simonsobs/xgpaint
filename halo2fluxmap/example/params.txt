@@ -4,6 +4,7 @@ format       = 'pksc'
 outbase      = 'example'
 
 iwantcat     = 0
+scramble     = True
 verbose      = 2
 Nreads       = 2
 
