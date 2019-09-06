@@ -62,10 +62,6 @@ def hod_shang(M):
 
     N_gal = N_cen + N_sat
 
-    N_cen = N_cen.astype('int32')
-    N_sat = N_sat.astype('int32')
-    N_gal = N_gal.astype('int32')
-
     return N_sat,N_cen,N_gal
 
 def fnfw(x):
