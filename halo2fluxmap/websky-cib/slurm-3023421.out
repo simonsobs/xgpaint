@@ -1,0 +1,198 @@
+
+------------------------------------------------------------------------
+Running on 40 processor(s)
+Time:      16:41:48 on 05/10/2019
+Directory: /home/zequnl/xgpaint/halo2fluxmap/websky-cib
+------------------------------------------------------------------------
+
+                          Reading, Shuffling, Culling Catalogue
+
+                          1 of 20 chunks read Ncen = 43146158
+                          1 of 20 chunks culled Ncen = 43146158
+                          1 of 20 chunks read, shuffled, and culled Ncen = 1078653
+                          2 of 20 chunks read Ncen = 43146158
+                          2 of 20 chunks culled Ncen = 43146158
+                          2 of 20 chunks read, shuffled, and culled Ncen = 2157306
+                          3 of 20 chunks read Ncen = 43146158
+                          3 of 20 chunks culled Ncen = 43146158
+                          3 of 20 chunks read, shuffled, and culled Ncen = 3235959
+                          4 of 20 chunks read Ncen = 43146158
+                          4 of 20 chunks culled Ncen = 43146158
+                          4 of 20 chunks read, shuffled, and culled Ncen = 4314612
+                          5 of 20 chunks read Ncen = 43146158
+                          5 of 20 chunks culled Ncen = 43146158
+                          5 of 20 chunks read, shuffled, and culled Ncen = 5393265
+                          6 of 20 chunks read Ncen = 43146158
+                          6 of 20 chunks culled Ncen = 43146158
+                          6 of 20 chunks read, shuffled, and culled Ncen = 6471918
+                          7 of 20 chunks read Ncen = 43146158
+                          7 of 20 chunks culled Ncen = 43146158
+                          7 of 20 chunks read, shuffled, and culled Ncen = 7550571
+                          8 of 20 chunks read Ncen = 43146158
+                          8 of 20 chunks culled Ncen = 43146158
+                          8 of 20 chunks read, shuffled, and culled Ncen = 8629224
+                          9 of 20 chunks read Ncen = 43146158
+                          9 of 20 chunks culled Ncen = 43146158
+                          9 of 20 chunks read, shuffled, and culled Ncen = 9707877
+                          10 of 20 chunks read Ncen = 43146158
+                          10 of 20 chunks culled Ncen = 43146158
+                          10 of 20 chunks read, shuffled, and culled Ncen = 10786530
+                          11 of 20 chunks read Ncen = 43146158
+                          11 of 20 chunks culled Ncen = 43146158
+                          11 of 20 chunks read, shuffled, and culled Ncen = 11865183
+                          12 of 20 chunks read Ncen = 43146158
+                          12 of 20 chunks culled Ncen = 43146158
+                          12 of 20 chunks read, shuffled, and culled Ncen = 12943836
+                          13 of 20 chunks read Ncen = 43146158
+                          13 of 20 chunks culled Ncen = 43146158
+                          13 of 20 chunks read, shuffled, and culled Ncen = 14022489
+                          14 of 20 chunks read Ncen = 43146158
+                          14 of 20 chunks culled Ncen = 43146158
+                          14 of 20 chunks read, shuffled, and culled Ncen = 15101142
+                          15 of 20 chunks read Ncen = 43146158
+                          15 of 20 chunks culled Ncen = 43146158
+                          15 of 20 chunks read, shuffled, and culled Ncen = 16179795
+                          16 of 20 chunks read Ncen = 43146158
+                          16 of 20 chunks culled Ncen = 43146158
+                          16 of 20 chunks read, shuffled, and culled Ncen = 17258448
+                          17 of 20 chunks read Ncen = 43146158
+                          17 of 20 chunks culled Ncen = 43146158
+                          17 of 20 chunks read, shuffled, and culled Ncen = 18337101
+                          18 of 20 chunks read Ncen = 43146158
+                          18 of 20 chunks culled Ncen = 43146158
+                          18 of 20 chunks read, shuffled, and culled Ncen = 19415754
+                          19 of 20 chunks read Ncen = 43146158
+                          19 of 20 chunks culled Ncen = 43146158
+                          19 of 20 chunks read, shuffled, and culled Ncen = 20494407
+                          20 of 20 chunks read Ncen = 43146140
+                          20 of 20 chunks culled Ncen = 43146140
+                          20 of 20 chunks read, shuffled, and culled Ncen = 21573060
+/usr/licensed/anaconda/2019.3/lib/python2.7/site-packages/scipy/optimize/minpack.py:162: RuntimeWarning: The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+  warnings.warn(msg, RuntimeWarning)
+/usr/licensed/anaconda/2019.3/lib/python2.7/site-packages/scipy/optimize/minpack.py:162: RuntimeWarning: The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+  warnings.warn(msg, RuntimeWarning)
+/usr/licensed/anaconda/2019.3/lib/python2.7/site-packages/scipy/optimize/minpack.py:162: RuntimeWarning: The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+  warnings.warn(msg, RuntimeWarning)
+                          Number of satellites: 4761440
+                          Populating...
+
+                          Centrals:   21573060
+                          Satellites: 118965
+/usr/licensed/anaconda/2019.3/lib/python2.7/site-packages/scipy/optimize/minpack.py:162: RuntimeWarning: The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+  warnings.warn(msg, RuntimeWarning)
+                          Time to populate halos:  5.11618898312minutes
+
+------------------------------------------------------------------------
+HOD completed
+Time:      16:53:15 on 05/10/2019
+------------------------------------------------------------------------
+
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+                          Time to assign fluxes: 8.82562495073 minutes
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+                          
+                          Finished making map nu:     100.0 GHz
+                               mean source intensity: 0.0004229893479961694
+                                  mean map intensity: 0.08999983
+                              mean central intensity: 0.0
+                            mean satellite intensity: 0.0004229893479961694
+                                     min, max of map: 0.0, 2597492.2
+                          Time to project galaxies: 0.603355749448 minutes
+                          Number of nonzero pixels:   4694325
+                          Wrote Map maps/radioII_ns4096_nu0100.fits
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+(0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23))
+                          
+                          Finished making map nu:     145.0 GHz
+                               mean source intensity: 0.00014321352532011653
+                                  mean map intensity: 0.17677067
+                              mean central intensity: 0.0
+                            mean satellite intensity: 0.00014321352532011653
+                                     min, max of map: 0.0, 12596176.0
+                          Wrote Map maps/radioII_ns4096_nu0145.fits
+
+------------------------------------------------------------------------
+Halo projection completed
+Time:      17:12:16 on 05/10/2019
+------------------------------------------------------------------------
+

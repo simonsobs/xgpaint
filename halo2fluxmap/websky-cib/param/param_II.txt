@@ -1,0 +1,45 @@
+folder       = '/tigress/zequnl/'
+inputfile    = 'halos.pksc'
+format       = 'pksc'
+outbase      = 'radioII'
+
+iwantcat     = 0
+verbose      = 2
+Nreads       = 20
+
+LightIO	     = False
+serial       = False
+flat         = 0            #0 for all sky, 1 for flatsky
+#all maps will be normalized w.r.t to the mean of the first map
+#freq_list    = ([545.]) 
+freq_list    = ([100.0, 145.0]) 
+Inu_norm     = 0.09 #0.0299988959602  # z<1.25 and z< 4.5 for M > 2.62e13Msun = 0.019840695547 0.0299988959602 
+nside        = 4096         #nside for healpix, npix for flatsky
+fov	     = 10
+numdens      = 0            #0 for cib, 1 for optical 
+
+min_redshift = 0.0
+max_redshift = 4.5
+num_redshift = 1       # If memory limited, splits the map into redshift slices 
+min_mass     = 1e12
+box_size     = 40000
+
+hod          = 'sehgal_radio'      #"shang" for cib, "manera" for optical, "sehgal_radio" for radio
+LM           = 'sehgal_radio' #'Planck2015'
+
+shang_Mpeak  = 10.**12.6
+shang_sigmaM = 0.5
+
+sehgal_M_0 = 3e15
+sehgal_N_0 = 0.015
+sehgal_alpha = 0.1
+sehgal_L_b = 10**27.5
+sehgal_m = -1.6
+sehgal_n = -0.65
+sehgal_type = 'II'
+sehgal_z_p = 1.3
+sehgal_sigma_l = 0.4
+sehgal_sigma_r = 0.73
+sehgal_R_int = 10**(-2.8)
+sehgal_gamma = 8.0
+sehgal_a_coeff = [0.0, (-0.12, 0.07), (-0.34, 0.99), (-0.75, -0.23)]
