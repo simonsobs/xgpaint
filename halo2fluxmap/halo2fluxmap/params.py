@@ -51,6 +51,7 @@ shang_I0     = 46
 #shang_I0     = 46
 shang_Mmin   = 1e10
 shang_Msmin  = 1e11
+shang_zplat  = 20.0
 shang_Mpeak  = 10.**12.2
 shang_sigmaM = 0.4
 shang_nc2ns  = 10
