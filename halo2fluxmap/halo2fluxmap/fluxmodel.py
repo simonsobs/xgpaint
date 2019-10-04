@@ -60,11 +60,12 @@ def f2t(intensity):
 
     return T.astype('float32')
 
-def nu2theta(nu):
-    xnu     = globals.h*nu/globals.k/params.shang_Td
-    Thetanu = (1/(nu*params.shang_I0) *
-               xnu**(4.+params.shang_beta)/(np.exp(xnu)-1.))
-    return Thetanu
+def nu2theta(nu,z):
+        Td      = params.shang_Td * (1+z)**params.shang_alpha
+        xnu     = globals.h*nu/globals.k/Td
+        Thetanu = (1/(nu*params.shang_I0) *
+                   xnu**(4.+params.shang_beta)/(np.exp(xnu)-1.))
+        return Thetanu
 
 def LF(M,x,y,z,gtype):
 
@@ -83,8 +84,12 @@ def LF(M,x,y,z,gtype):
     if (params.LM=="Planck2015"):              #const * M_500/1e14M_sun
         L = M*np.sqrt(200./500) / 1.e14 #sqrt(200/500) to convert M_200 to M_500
 
-    L *= nu2theta(r)
-    L *= (1+z)**params.shang_eta
+    L *= nu2theta(r,z)
+    shang_fac = (1+z  )**params.shang_eta
+    dm = [z>params.shang_zplat]
+    shang_fac[dm] = (1+params.shang_zplat)**params.shang_eta
+
+    L *= shang_fac
 
     return L
 

@@ -40,6 +40,7 @@ scalar_index = 0.96
 sigma8       = 0.8   
 
 shang_Td     = 24.4          #Planck 2013 values
+shang_alpha  = 0.36
 shang_beta   = 1.75
 shang_eta    = 3.2           #same as delta_CIB in paper
 shang_I0     = 46
