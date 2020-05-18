@@ -38,6 +38,9 @@ def ReadPkscLightCone(i):
     halos.RTHmax     = np.fromfile(pkfile, dtype=np.float32, count=1).astype('float')[0]
     halos.redshiftin = np.fromfile(pkfile, dtype=np.float32, count=1).astype('float')[0]
 
+    # DEBUG
+#    halos.Non  = 10000
+    
     start = int(np.ceil(float(halos.Non)/Nreads)*i)
     end   = int(min( halos.Non , np.ceil(float(halos.Non)/Nreads)*(i+1) ))
 

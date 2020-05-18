@@ -23,7 +23,8 @@ def halos2sources(cen,nsat,nsatmean,sat):
     mcen = cen[:,3]
     # Parent Mass and Nsat
     msat = flux2map.cen2sat_masses(np.column_stack((mcen,nsat)),nsat,nsatmean)
-
+    mhsat = sat[:,3]
+    
     #CALCULATE FLUX FROM CENTRALS AND SATELLITES
     if params.numdens==0:
         if (params.LM=="Planck2013"):
@@ -52,5 +53,5 @@ def halos2sources(cen,nsat,nsatmean,sat):
         report('Time to assign fluxes: '+str(dt)+' minutes',2)
         
     return (pcen,mcen,fcen,nsat,
-            psat,msat,fsat,
+            psat,msat,mhsat,fsat,
             lcen,lsat)

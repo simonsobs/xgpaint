@@ -134,6 +134,7 @@ def populate_centrals(cen,ns):
         print params.justify,'Satellites:',N
 
     sat = flux2map.cen2sat(cen,ns)
+    mhsat = sat[:,3].copy() # host halo mass of sattelite
 
     # satarr_1 = concentration of satellite
     # satarr_2 = log satellite inner mass in units of host mass
@@ -166,7 +167,9 @@ def populate_centrals(cen,ns):
     if(params.rank==0 and params.verbose>0): 
         report('Time to populate halos:  '+str(dt)+'minutes',2)
 
-    return sat[:,:3]
+    sat[:,3] = mhsat
+    
+    return sat
 
 def make_muofn():
     

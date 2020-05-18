@@ -2,11 +2,12 @@ import flux2map
 import params
 
 import numpy      as np
+import os
 
 from   fluxmodel  import *
 
 def sources2map(pcen,mcen,fcen,nsat,
-                psat,msat,fsat,
+                psat,msat,mhsat,fsat,
                 lcen,lsat):
     import time
 
@@ -67,10 +68,10 @@ def sources2map(pcen,mcen,fcen,nsat,
         tot_src_flux_buff  = np.array(0,            dtype='float32')
         tot_src_flux_buffl = np.array(tot_src_fluxl,dtype='float32')
 
-        params.comm.Reduce([I_mapl,             MPI.FLOAT],[I_map,             MPI.FLOAT],
-                           op = MPI.SUM, root = 0)
-        params.comm.Reduce([tot_src_flux_buffl, MPI.FLOAT],[tot_src_flux_buff, MPI.FLOAT],
-                           op = MPI.SUM, root = 0)
+        params.comm.Allreduce([I_mapl,             MPI.FLOAT],[I_map,             MPI.FLOAT],
+                           op = MPI.SUM) #, root = 0)
+        params.comm.Allreduce([tot_src_flux_buffl, MPI.FLOAT],[tot_src_flux_buff, MPI.FLOAT],
+                           op = MPI.SUM) #, root = 0)
 
         tot_src_flux       = tot_src_flux_buff
 
@@ -79,21 +80,49 @@ def sources2map(pcen,mcen,fcen,nsat,
         I_map        = I_mapl
         tot_src_flux = tot_src_fluxl
 
-    if(params.rank==0):
-        # normalize final map values to specified frequency
+
+    # each processor now writes out the galaxy catalogue, to a seperate file
+    # normalize final map values to specified frequency
+    if params.nu_obs_GHz  == params.norm_freq:
+        params.norm_value = np.mean(I_map)
+
+    I_map = I_map / params.norm_value
+    I_map = I_map * params.Inu_norm
+    
+    # get total flux of map by multiplying mean intensity by map solid angle
+    map_flux = (I_map).mean()*omega_map
+    
+    # normalize sources to have the same total flux as map
+    fcen *= map_flux / tot_src_flux
+    fsat *= map_flux / tot_src_flux
+    tot_src_flux = fcen.sum() + fsat.sum()    
+
+    if params.iwantcat==1:   #save centrals and satellites
+        report('Saving Galaxy Catalogues to Disk',2)
+        dir = 'galaxy_catalogues/'
+        if not os.path.isdir(dir):
+            os.mkdir(dir)
+
         if params.nu_obs_GHz  == params.norm_freq:
-            params.norm_value = np.mean(I_map)
+            # On first frequency map in list write galaxy position catalogue 
+            np.savez('{:s}{:s}_censat_proc{:04d}.npz'.format(dir,
+                                                             params.inputfile,
+                                                             params.rank),
+                     xcen=pcen[:,0],ycen=pcen[:,1],zcen=pcen[:,2],
+                     mcen=mcen,nsat_inhalo=nsat,
+                     xsat=psat[:,0],ysat=psat[:,1],zsat=psat[:,2],
+                     msat=msat,mhsat=mhsat,
+                     Nsat=psat.shape[0],Ncen=pcen.shape[0])
 
-        I_map = I_map / params.norm_value
-        I_map = I_map * params.Inu_norm
+        # On all frequency maps in list write flux catalogues 
+        np.savez('{:s}{:s}_censat_proc{:04d}_f{:04d}GHz.npz'.format(dir,
+                                                                    params.inputfile,
+                                                                    params.rank,
+                                                                    int(params.nu_obs_GHz)),
+                 
+                 fcen=fcen,fsat=fsat)
 
-        # get total flux of map by multiplying mean intensity by map solid angle
-        map_flux = (I_map).mean()*omega_map
-
-        # normalize sources to have the same total flux as map
-        fcen *= map_flux / tot_src_flux
-        fsat *= map_flux / tot_src_flux
-        tot_src_flux = fcen.sum() + fsat.sum()
+    if(params.rank==0):
 
         report('',2)
         report('Finished making map nu:     '+str(params.nu_obs_GHz)+' GHz',2)
@@ -104,13 +133,6 @@ def sources2map(pcen,mcen,fcen,nsat,
         report('           min, max of map: '+str(np.min(I_map))+', '+str(np.max(I_map)),2)
 
         nonzeropix = np.shape(I_map[I_map>0])[0]
-
-        if params.iwantcat==1:   #save centrals and satellites
-            np.savez(params.inputfile+"_censat_"+str(params.nu_obs_GHz),
-                                 xcen=pcen[:,0],ycen=pcen[:,1],zcen=pcen[:,2],
-                 mcen=mcen,fcen=fcen,nsat=nsat,
-                                 xsat=psat[:,0],ysat=psat[:,1],zsat=psat[:,2],
-                 msat=msat,fsat=fsat,lcen=lcen,lsat=lsat)
 
         t1=time.time()
         dt = (t1-t2)/60.

@@ -54,11 +54,11 @@ def cen2sat(np.ndarray cen, np.ndarray n):
     
     '''
     Parameters
-    cen[:,0]:  array of central masses
+    cen[:,3]:  array of central masses
     n: 	       array of central number of satellites for each central
     
     Returns
-    sat[:,0]: array containing parent halo mass for each satellite
+    sat[:,3]: array containing parent halo mass for each satellite
     '''
     
     cdef long N_sat = np.sum(n)
@@ -80,6 +80,7 @@ def cen2sat_masses(np.ndarray cen, np.ndarray n, np.ndarray nmean):
     '''
     Parameters
     cen[:,0]: array of central masses
+    cen[:,1]: array of number of satelllites
     n: 	      array of number of satellites for each central
     
     Returns

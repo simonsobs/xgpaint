@@ -39,19 +39,14 @@ omegal       = 0.75
 scalar_index = 0.96
 sigma8       = 0.8   
 
-shang_Td     = 24.4          #Planck 2013 values
+shang_Td     = 24.4          # Planck 2013 values
 shang_alpha  = 0.36
 shang_beta   = 1.75
-shang_eta    = 3.2           #same as delta_CIB in paper
+shang_eta    = 3.2           # same as delta_CIB in paper
 shang_I0     = 46
-
-#shang_Td     = 20           # old values
-#shang_beta   = 1.4
-#shang_eta    = 2.0
-#shang_I0     = 46
+shang_zplat  = 20.0          # set this large for no plateau
 shang_Mmin   = 1e10
 shang_Msmin  = 1e11
-shang_zplat  = 20.0
 shang_Mpeak  = 10.**12.2
 shang_sigmaM = 0.4
 shang_nc2ns  = 10

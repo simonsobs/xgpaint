@@ -1,18 +1,18 @@
-folder       = './catalogs/'
-inputfile    = 'example-catalog.pksc'
+folder       = '/global/cscratch1/sd/gstein/websky_maps/v0.2/catalogs/'
+inputfile    = 'websky_halos-light.pksc'
 format       = 'pksc'
-outbase      = 'example'
+outbase      = 'cib'
 
 iwantcat     = 0
-scramble     = True
 verbose      = 2
-Nreads       = 2
+Nreads       = 16
 
-serial       = True
-flat         = 1            #0 for all sky, 1 for flatsky
-freq_list    = ([545.]) #all maps will be normalized w.r.t to the mean of the first map          
-#freq_list    = ([545., 100., 143., 217., 353., 857.]) #all maps will be normalized w.r.t to the mean of the first map          
-Inu_norm     = 0.0299988959602  # z<1.25 and z< 4.5 for M > 2.62e13Msun = 0.019840695547 0.0299988959602 
+LightIO	     = True
+serial       = False
+flat         = 0            #0 for all sky, 1 for flatsky
+#all maps will be normalized w.r.t to the mean of the first map
+freq_list    = ([545., 857.,217., 353., 143., 69., 70., 71., 100., 26., 27., 28., 38., 39., 40., 92., 93., 94., 144., 145., 146., 224., 225., 226., 279., 280., 281.]) 
+Inu_norm     = 0.3180384 
 nside        = 4096         #nside for healpix, npix for flatsky
 fov	     = 10
 numdens      = 0            #0 for cib, 1 for optical 
@@ -20,9 +20,16 @@ numdens      = 0            #0 for cib, 1 for optical
 min_redshift = 0.0
 max_redshift = 4.5
 num_redshift = 1       # If memory limited, splits the map into redshift slices 
-min_mass     = 2.62e13
+min_mass     = 1e12
 box_size     = 40000
 
 hod          = 'shang'      #"shang" for cib, "manera" for optical 
 LM           = 'Planck2013' #'Planck2015'
-
+	     
+shang_zplat  = 2.0
+shang_Td     = 20.7
+shang_beta   = 1.6
+shang_eta    = 2.4
+shang_alpha  = 0.2
+shang_Mpeak  = 10.**12.3
+shang_sigmaM = 0.3
